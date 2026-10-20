@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="description" content="AMINUL AI Calculator — scientific calculations and AI-powered math assistance by Aminul Islam.">
+  <title>AMINUL AI CALCULATOR PRO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">A<span>i</span></span>
+      <span><b>AMINUL AI</b><small>CALCULATOR PRO</small></span>
+    </a>
+    <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">☼</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">✦ SMART CALCULATION PLATFORM</span>
+      <h1>Calculate <span>Anything.</span></h1>
+      <p>Powerful tools. Smarter answers. One platform.</p>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-panel="calculator">▦ Calculator</button>
+      <button class="tab" data-panel="ai">✦ AI Assistant</button>
+      <button class="tab" data-panel="tools">⊞ All Tools</button>
+      <button class="tab" data-panel="help">♡ Help Center</button>
+    </nav>
+
+    <section id="calculator" class="panel active">
+      <div class="calculator card">
+        <div class="card-heading">
+          <div><span class="live-dot"></span> SCIENTIFIC CALCULATOR</div>
+          <button id="historyBtn" class="text-btn">History ↗</button>
+        </div>
+
+        <div class="display">
+          <div id="expression" class="expression">0</div>
+          <div id="result" class="result">0</div>
+          <div id="calcMessage" class="calc-message">Ready to calculate</div>
+        </div>
+
+        <div id="keypad" class="keypad">
+          <button data-action="clear" class="key danger">AC</button>
+          <button data-value="(" class="key utility">(</button>
+          <button data-value=")" class="key utility">)</button>
+          <button data-value="%" class="key utility">%</button>
+          <button data-value="/" class="key operator">÷</button>
+
+          <button data-value="sin(" class="key function">sin</button>
+          <button data-value="cos(" class="key function">cos</button>
+          <button data-value="tan(" class="key function">tan</button>
+          <button data-value="sqrt(" class="key function">√</button>
+          <button data-value="*" class="key operator">×</button>
+
+          <button data-value="7" class="key">7</button>
+          <button data-value="8" class="key">8</button>
+          <button data-value="9" class="key">9</button>
+          <button data-value="^" class="key utility">xʸ</button>
+          <button data-value="-" class="key operator">−</button>
+
+          <button data-value="4" class="key">4</button>
+          <button data-value="5" class="key">5</button>
+          <button data-value="6" class="key">6</button>
+          <button data-value="log10(" class="key function">log</button>
+          <button data-value="+" class="key operator">+</button>
+
+          <button data-value="1" class="key">1</button>
+          <button data-value="2" class="key">2</button>
+          <button data-value="3" class="key">3</button>
+          <button data-value="pi" class="key function">π</button>
+          <button data-value="e" class="key function">e</button>
+
+          <button data-action="sign" class="key utility">±</button>
+          <button data-value="0" class="key">0</button>
+          <button data-value="." class="key">.</button>
+          <button data-action="backspace" class="key utility">⌫</button>
+          <button data-action="equals" class="key equals">=</button>
+        </div>
+
+        <div class="display-options">
+          <button id="angleBtn" class="text-btn">Angle: DEG</button>
+          <button id="copyBtn" class="text-btn">Copy result</button>
+        </div>
+      </div>
+
+      <div id="historyBox" class="card history-box hidden">
+        <div class="card-heading"><b>Calculation History</b><button id="clearHistory" class="text-btn">Clear</button></div>
+        <div id="historyList">No calculations yet.</div>
+      </div>
+    </section>
+
+    <section id="ai" class="panel">
+      <div class="card ai-card">
+        <div class="ai-heading">
+          <div class="ai-symbol">✦</div>
+          <div><h2>AI Math Assistant</h2><p>Ask naturally. Understand every step.</p></div>
+        </div>
+        <div class="notice">AI answers can make mistakes. Verify important calculations.</div>
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="Find 25% of 840 and explain the steps">Find 25% of 840</button>
+          <button class="suggestion" data-prompt="Solve 2x + 7 = 19 step by step">Solve 2x + 7 = 19</button>
+          <button class="suggestion" data-prompt="Explain compound interest with an example">Explain compound interest</button>
+        </div>
+        <div id="chatMessages" class="chat-messages" aria-live="polite">
+          <div class="message assistant">Hello! I'm your AI maths assistant. Type a question in English or Hinglish.</div>
+        </div>
+        <form id="aiForm" class="chat-form">
+          <textarea id="aiInput" maxlength="3000" rows="3" placeholder="Example: 850 mein se 680 marks hain, percentage batao..." required></textarea>
+          <button id="aiSend" class="primary-btn" type="submit">Solve with AI ✦</button>
+        </form>
+        <p class="small-note">Your question is sent to the configured AI service through our backend.</p>
+      </div>
+    </section>
+
+    <section id="tools" class="panel">
+      <div class="tool-grid">
+        <article class="card tool-card">
+          <span class="tool-icon">％</span><h3>Percentage</h3>
+          <p>Find a percentage of a number.</p>
+          <label>Number<input id="pctNum" type="number" placeholder="840"></label>
+          <label>Percentage (%)<input id="pctRate" type="number" placeholder="25"></label>
+          <button class="primary-btn" id="pctBtn">Calculate</button>
+          <div class="tool-result" id="pctResult">Result will appear here.</div>
+        </article>
+
+        <article class="card tool-card">
+          <span class="tool-icon">⌁</span><h3>Average</h3>
+          <p>Calculate the arithmetic mean.</p>
+          <label>Numbers, comma-separated<input id="avgNums" placeholder="10, 20, 30, 40"></label>
+          <button class="primary-btn" id="avgBtn">Calculate</button>
+          <div class="tool-result" id="avgResult">Result will appear here.</div>
+        </article>
+
+        <article class="card tool-card">
+          <span class="tool-icon">↗</span><h3>Simple Interest</h3>
+          <p>Calculate interest and total amount.</p>
+          <label>Principal (₹)<input id="siP" type="number" min="0" placeholder="10000"></label>
+          <label>Annual rate (%)<input id="siR" type="number" min="0" placeholder="5"></label>
+          <label>Time (years)<input id="siT" type="number" min="0" placeholder="2"></label>
+          <button class="primary-btn" id="siBtn">Calculate</button>
+          <div class="tool-result" id="siResult">Result will appear here.</div>
+        </article>
+
+        <article class="card tool-card">
+          <span class="tool-icon">⇄</span><h3>Unit Converter</h3>
+          <p>Convert common units of length.</p>
+          <label>Value<input id="unitValue" type="number" placeholder="100"></label>
+          <label>Conversion
+            <select id="unitType">
+              <option value="m-km">Metres → Kilometres</option>
+              <option value="km-m">Kilometres → Metres</option>
+              <option value="cm-m">Centimetres → Metres</option>
+              <option value="m-cm">Metres → Centimetres</option>
+              <option value="kg-g">Kilograms → Grams</option>
+              <option value="g-kg">Grams → Kilograms</option>
+              <option value="c-f">Celsius → Fahrenheit</option>
+              <option value="f-c">Fahrenheit → Celsius</option>
+            </select>
+          </label>
+          <button class="primary-btn" id="unitBtn">Convert</button>
+          <div class="tool-result" id="unitResult">Result will appear here.</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="help" class="panel">
+      <div class="card help-card">
+        <span class="eyebrow">WE'RE HERE TO HELP</span>
+        <h2>Help Center</h2>
+        <p>Questions, feedback or suggestions? Connect with the creator.</p>
+        <div class="creator">
+          <div class="creator-avatar">AI</div>
+          <div><h3>Aminul Islam</h3><p>Creator · AMINUL AI CALCULATOR</p></div>
+        </div>
+        <a class="contact-link" href="https://www.instagram.com/tech4aminul/" target="_blank" rel="noopener noreferrer"><span>◎</span><span><b>Instagram</b><small>@tech4aminul</small></span><span>↗</span></a>
+        <a class="contact-link" href="https://wa.me/919864165213" target="_blank" rel="noopener noreferrer"><span>◉</span><span><b>WhatsApp</b><small>Message the creator</small></span><span>↗</span></a>
+        <div class="notice">Do not share passwords, private keys or sensitive personal information in support messages.</div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-brand">AMINUL AI CALCULATOR PRO</div>
+      <p>Designed with care by <b>Aminul Islam</b></p>
+      <p class="small-note">Independent project · Not a substitute for professional advice.</p>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/mathjs@14.2.1/lib/browser/math.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
